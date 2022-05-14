@@ -1,0 +1,57 @@
+1.	Update table command syntax in Google Bigquery 
+	==============================================  
+	UPDATE projectddl.MovieDataset.MovieNewTable set Rating=3.8 where id=189 ;  
+	
+2.	To update all the rows in a table 
+	=================================
+	UPDATE projectddl.MovieDataset.MovieNewTable set rating = rating+0.0001 where 1=1;
+
+1. Alter table command syntax in Google Bigquery (add a new column to table)
+	===================================
+	Alter table ‘projectddl.MovieDataset.myNewTable’  
+		add column Revenue STRING ;  
+		
+2.	ALTER TABLE RENAME TO statement 
+	================================ 
+	alter table projectddl.MovieDataset.myNewTable 
+		rename to myNewTable ; 
+		
+3.	ALTER TABLE DROP COLUMN statement 
+	=================================  
+	Alter table projectddl.MovieDataset.myNewTable drop column 	
+		If exists revenue;  
+		
+4.	ALTER COLUMN SET OPTIONS statement 
+	================================== 
+	alter table projectddl.MovieDataset.myNewTable 
+	SET OPTIONS(description="Year of Release");
+	
+5.	ALTER COLUMN SET DATA TYPE statement 
+	==================================== 
+	CREATE TABLE projectddl.MovieDataset.Table_X(c1 INT64); 
+	ALTER TABLE projectddl.MovieDataset.Table_X ALTER COLUMN c1 SET DATA TYPE NUMERIC ; 
+	
+6. 	ALTER VIEW SET OPTIONS statement 
+	================================
+	View need to be created on SELECT statement. 
+	select * from projectddl.MovieDataset.Table_X; 
+	
+	6.1	ALTER VIEW view_name SET OPTIONS(view_set_options_list)	
+		ALTER VIEW
+		projectddl.MovieDataset.view_MovieTable
+		SET
+		OPTIONS ( expiration_timestamp=TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 7 DAY),
+		description="View that expires seven days from now" ) ;
+
+DROP SCHEMA statement
+=====================
+1.	Delete a dataset
+		DROP TABLE
+		projectddl.MovieDataset.Table_X ;
+	
+2.	DROP VIEW statement
+		DROP VIEW IF EXISTS mydataset.myview;
+		
+
+
+
